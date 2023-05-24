@@ -8,8 +8,32 @@ class App extends Component {
     bad: 0,
   };
 
+  addGood = () => {
+    this.setState(prevState => ({
+      good: prevState.good + 1,
+    }));
+  };
+  addNeutral = () => {
+    this.setState(prevState => ({
+      neutral: prevState.neutral + 1,
+    }));
+  };
+  addBad = () => {
+    this.setState(prevState => ({
+      bad: prevState.bad + 1,
+    }));
+  };
   render() {
-    return <FeedBack />;
+    return (
+      <FeedBack
+        good={this.state.good}
+        neutral={this.state.neutral}
+        bad={this.state.bad}
+        onAddGood={this.addGood}
+        onAddNeutral={this.addNeutral}
+        onAddBad={this.addBad}
+      />
+    );
   }
 }
 

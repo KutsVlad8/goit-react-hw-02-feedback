@@ -1,21 +1,43 @@
-// import css from './FeedBack.styled';
+import {
+  Section,
+  Thumb,
+  Title,
+  Button,
+  StatisticsList,
+  ListItem,
+} from './FeedBack.styled';
 
-const FeedBack = ({ text }) => {
+const FeedBack = ({
+  good,
+  neutral,
+  bad,
+  onAddGood,
+  onAddNeutral,
+  onAddBad,
+}) => {
   return (
-    <section>
-      <h1>Please leave feeback</h1>
-      <button>Good</button>
-      <button>Neutral</button>
-      <button>Bad</button>
+    <Section>
+      <Thumb>
+        <Title>Please leave feeback</Title>
+        <Button type="button" onClick={() => onAddGood()}>
+          Good
+        </Button>
+        <Button type="button" onClick={() => onAddNeutral()}>
+          Neutral
+        </Button>
+        <Button type="button" onClick={() => onAddBad()}>
+          Bad
+        </Button>
 
-      <h2>Statistics</h2>
+        <h2>Statistics</h2>
 
-      <ul>
-        <li> Good:0 </li>
-        <li> neutral:0 </li>
-        <li> Bad:0 </li>
-      </ul>
-    </section>
+        <StatisticsList>
+          <ListItem> Good: {good} </ListItem>
+          <ListItem> neutral: {neutral} </ListItem>
+          <ListItem> Bad: {bad} </ListItem>
+        </StatisticsList>
+      </Thumb>
+    </Section>
   );
 };
 
