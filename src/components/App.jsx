@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import FeedBack from './FeedBack/FeedBack';
 
 class App extends Component {

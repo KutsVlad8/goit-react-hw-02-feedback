@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Section,
   Thumb,
@@ -48,6 +49,17 @@ const FeedBack = ({
       </Thumb>
     </Section>
   );
+};
+
+FeedBack.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  total: PropTypes.number,
+  percentage: PropTypes.number,
+  onAddGood: PropTypes.func,
+  onAddNeutral: PropTypes.func,
+  onAddBad: PropTypes.func,
 };
 
 export default FeedBack;
