@@ -5,12 +5,16 @@ export const Section = styled.section`
 
   margin-left: auto;
   margin-right: auto;
-
-  background-color: #d1cece;
 `;
 
 export const Thumb = styled.div`
   padding: 15px;
+  width: 450px;
+  background-color: #d1cece;
+  border-radius: 5px;
+  margin-top: 25px;
+  /* box-shadow: 0 0 74px #e76508ed; */
+  box-shadow: 2px 3px 5px 7px rgb(227 89 9 / 50%);
 `;
 
 export const Title = styled.h1`
@@ -39,3 +43,5 @@ export const StatisticsList = styled.ul`
 export const ListItem = styled.li`
   margin-bottom: 8px;
 `;
+
+export const Text = styled.p``;
