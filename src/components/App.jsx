@@ -6,32 +6,57 @@ class App extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
+    total: 0,
+    percentage: 0,
   };
 
-  addGood = () => {
+  addGoodFeedback = () => {
     this.setState(prevState => ({
       good: prevState.good + 1,
     }));
+    this.countTotalFeedback();
+    this.countPositiveFeedbackPercentage();
   };
-  addNeutral = () => {
+
+  addNeutralFeedback = () => {
     this.setState(prevState => ({
       neutral: prevState.neutral + 1,
     }));
+    this.countTotalFeedback();
+    this.countPositiveFeedbackPercentage();
   };
-  addBad = () => {
+
+  addBadFeedback = () => {
     this.setState(prevState => ({
       bad: prevState.bad + 1,
     }));
+    this.countTotalFeedback();
+    this.countPositiveFeedbackPercentage();
   };
+
+  countTotalFeedback = () => {
+    this.setState(prevState => ({
+      total: prevState.total + 1,
+    }));
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    this.setState(prevState => ({
+      percentage: Math.round((prevState.good * 100) / prevState.total),
+    }));
+  };
+
   render() {
     return (
       <FeedBack
         good={this.state.good}
         neutral={this.state.neutral}
         bad={this.state.bad}
-        onAddGood={this.addGood}
-        onAddNeutral={this.addNeutral}
-        onAddBad={this.addBad}
+        total={this.state.total}
+        percentage={this.state.percentage}
+        onAddGood={this.addGoodFeedback}
+        onAddNeutral={this.addNeutralFeedback}
+        onAddBad={this.addBadFeedback}
       />
     );
   }

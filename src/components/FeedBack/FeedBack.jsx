@@ -5,12 +5,15 @@ import {
   Button,
   StatisticsList,
   ListItem,
+  Text,
 } from './FeedBack.styled';
 
 const FeedBack = ({
   good,
   neutral,
   bad,
+  total,
+  percentage,
   onAddGood,
   onAddNeutral,
   onAddBad,
@@ -31,11 +34,17 @@ const FeedBack = ({
 
         <h2>Statistics</h2>
 
-        <StatisticsList>
-          <ListItem> Good: {good} </ListItem>
-          <ListItem> neutral: {neutral} </ListItem>
-          <ListItem> Bad: {bad} </ListItem>
-        </StatisticsList>
+        {total === 0 ? (
+          <Text>No feedBack given</Text>
+        ) : (
+          <StatisticsList>
+            <ListItem> Good: {good} </ListItem>
+            <ListItem> neutral: {neutral} </ListItem>
+            <ListItem> Bad: {bad} </ListItem>
+            <ListItem> Total: {total} </ListItem>
+            <ListItem> Possitive feadback: {percentage}% </ListItem>
+          </StatisticsList>
+        )}
       </Thumb>
     </Section>
   );
