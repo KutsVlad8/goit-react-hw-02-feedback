@@ -1,5 +1,13 @@
 import styled from '@emotion/styled';
 
+export const ButtonsList = styled.ul`
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+`;
+
+export const ButtonListItem = styled.li``;
+
 export const Button = styled.button`
   width: 70px;
   height: 30px;

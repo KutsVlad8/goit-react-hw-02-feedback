@@ -11,26 +11,18 @@ class App extends Component {
     bad: 0,
   };
 
-  addGoodFeedback = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
+  handleLeavFeedback = event => {
+    const { name } = event.target;
 
-  addNeutralFeedback = () => {
     this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-
-  addBadFeedback = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
+      [name]: prevState[name] + 1,
     }));
   };
 
   countTotalFeedback = () => {
-    const totalFeedback = this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+
+    const totalFeedback = good + neutral + bad;
     return totalFeedback;
   };
 
@@ -42,16 +34,24 @@ class App extends Component {
   };
 
   render() {
-    const totalFeedback = this.countTotalFeedback();
-    const positivePercentage = this.countPositiveFeedbackPercentage();
+    const { good, neutral, bad } = this.state;
+    const {
+      countTotalFeedback,
+      countPositiveFeedbackPercentage,
+      handleLeavFeedback,
+    } = this;
+
+    const options = ['good', 'neutral', 'bad'];
+    const totalFeedback = countTotalFeedback();
+    const positivePercentage = countPositiveFeedbackPercentage();
+
     return (
       <Card>
         <Thumb>
           <Section title={'Please leave feeback'}>
             <FeedbackOptions
-              onAddGood={this.addGoodFeedback}
-              onAddNeutral={this.addNeutralFeedback}
-              onAddBad={this.addBadFeedback}
+              options={options}
+              onLeaveFeedback={handleLeavFeedback}
             />
           </Section>
 
@@ -60,9 +60,9 @@ class App extends Component {
           ) : (
             <Section title={'Statistics'}>
               <Statistics
-                good={this.state.good}
-                neutral={this.state.neutral}
-                bad={this.state.bad}
+                good={good}
+                neutral={neutral}
+                bad={bad}
                 total={totalFeedback}
                 percentage={positivePercentage}
               />
